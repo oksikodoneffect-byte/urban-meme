@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Дом на CSS</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  display: flex; justify-content: center; align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(to bottom, #87CEEB, #E0F6FF);
+}
+.scene { position: relative; width: 400px; height: 500px; }
+.chimney {
+  position: absolute; top: 100px; right: 130px;
+  width: 40px; height: 100px;
+  background: linear-gradient(to right, #8B4513, #A0522D, #8B4513);
+  border: 2px solid #654321; z-index: 1;
+}
+.chimney::before {
+  content: ''; position: absolute; top: -10px; left: -5px;
+  width: 50px; height: 10px; background: #654321; border-radius: 2px;
+}
+.smoke {
+  position: absolute; top: 80px; right: 140px;
+  width: 20px; height: 20px;
+  background: rgba(200,200,200,0.6);
+  border-radius: 50%; animation: smoke 3s infinite;
+}
+.smoke:nth-child(2) { animation-delay: 1s; right: 135px; }
+.smoke:nth-child(3) { animation-delay: 2s; right: 145px; }
+@keyframes smoke {
+  0% { transform: translateY(0) scale(1); opacity: 0.6; }
+  100% { transform: translateY(-40px) scale(2); opacity: 0; }
+}
+.roof {
+  position: absolute; top: 150px; left: 50%;
+  transform: translateX(-50%);
+  width: 0; height: 0;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  border-bottom: 100px solid #8B0000; z-index: 2;
+}
+.house {
+  position: absolute; top: 250px; left: 50%;
+  transform: translateX(-50%);
+  width: 280px; height: 200px;
+  background: linear-gradient(to bottom, #F5DEB3, #DEB887);
+  border: 3px solid #8B7355; z-index: 1;
+}
+.window {
+  position: absolute; top: 40px; left: 40px;
+  width: 80px; height: 80px;
+  background: linear-gradient(135deg, #87CEEB, #4682B4);
+  border-radius: 50%; border: 4px solid #8B7355;
+}
+.window::before {
+  content: ''; position: absolute; top: 50%; left: 0;
+  width: 100%; height: 4px; background: #8B7355;
+  transform: translateY(-50%);
+}
+.window::after {
+  content: ''; position: absolute; left: 50%; top: 0;
+  width: 4px; height: 100%; background: #8B7355;
+  transform: translateX(-50%);
+}
+.door {
+  position: absolute; bottom: 0; right: 40px;
+  width: 70px; height: 100px;
+  background: linear-gradient(to right, #654321, #8B4513, #654321);
+  border: 3px solid #4a2f1a; border-bottom: none;
+}
+.door-handle {
+  position: absolute; top: 50%; right: 10px;
+  width: 8px; height: 8px;
+  background: #FFD700; border-radius: 50%;
+}
+.grass {
+  position: absolute; bottom: 0; left: 0; width: 100%; height: 50px;
+  background: linear-gradient(to bottom, #7CFC00, #228B22);
+  border-top: 3px solid #006400;
+}
+</style>
+</head>
+<body>
+<div class="scene">
+  <div class="smoke"></div>
+  <div class="smoke"></div>
+  <div class="smoke"></div>
+  <div class="chimney"></div>
+  <div class="roof"></div>
+  <div class="house">
+    <div class="window"></div>
+    <div class="door"><div class="door-handle"></div></div>
+  </div>
+  <div class="grass"></div>
+</div>
+</body>
+</html>
